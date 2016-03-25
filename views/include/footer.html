@@ -1,0 +1,21 @@
+</div>
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="/lib/js/bootstrap.min.js"></script>
+<script>
+    var url = location.href;
+    var pathName = url.substr(url.lastIndexOf('/'));
+    $('.navbar-nav a').each(function () {
+        if ($(this).attr('href').indexOf(pathName) > -1 && pathName != '/') {
+            $(this).parent().addClass('active');
+            return false;
+        }
+    })
+
+    if ($('.alert-success').length > -1) {
+        setTimeout(function () {
+            $('.alert-success').hide();
+        }, 1000)
+    }
+</script>
+</body>
+</html>

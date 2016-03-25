@@ -1,0 +1,25 @@
+<%- include ../include/header.html%>
+<form method="post" action="/articles/add" enctype="multipart/form-data">
+    <%if(article._id){%>
+    <input type="hidden" name="_id" value="<%=article._id%>">
+    <%}%>
+
+    <div class="form-group">
+        <label for="title">标题</label>
+        <input type="text" value="<%=article.title%>" class="form-control" id="title" name="title" placeholder="标题">
+    </div>
+    <div class="form-group">
+        <label for="content">内容</label>
+        <textarea name="content" class="form-control" id="content" cols="30" rows="10"><%=article.content%></textarea>
+    </div>
+    <div class="form-group">
+        <label for="img">图片</label>
+        <%if(article.img){%>
+        <img src="<%=article.img%>" alt="" style="width:100px;height:100px">
+        <%}%>
+        <input type="file" id="img" name="img" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-info">提交</button>
+</form>
+
+<%- include ../include/footer.html%>

@@ -1,0 +1,14 @@
+<%- include ../include/header.html%>
+<div class="panel panel-success">
+    <div class="panel-heading"><%=article.title%></div>
+    <div class="panel-body">
+        <p><%-article.content%></p>
+    </div>
+    <div class="panel-footer">
+        <%if(article.editable){%>
+        <a class="btn btn-warning" href="/articles/update/<%=article._id%>">修改</a>
+        <a class="btn btn-danger" href="/articles/delete/<%=article._id%>">删除</a>
+        <%}%>
+    </div>
+</div>
+<%- include ../include/footer.html%>

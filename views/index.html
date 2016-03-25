@@ -1,0 +1,31 @@
+<%- include include/header.html%>
+<div class="container">
+    <ul class="media-list">
+        <%
+        articles.forEach(function(article){
+        %>
+        <li class="media">
+            <div class="media-left">
+                <a href="#">
+                    <img class="media-object" src="<%=article.user.avatar%>" alt="">
+                </a>
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading"><a href="/articles/details/<%=article._id%>"><%=article.title%></a></h4>
+
+                <p class="media-left"><%- article.content%></p>
+                <%if(article.img){%>
+                <img src="<%=article.img%>" style="width:100px;height:100px" alt="">
+                <%}%>
+            </div>
+            <div class="media-bottom">
+                作者:<%=article.user.username%>
+                发表时间:<%=article.createAt.toLocaleString()%>
+            </div>
+        </li>
+        <%
+        });
+        %>
+    </ul>
+</div>
+<%- include include/footer.html%>
