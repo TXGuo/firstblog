@@ -64,7 +64,7 @@ router.post('/add', upload.single('img'), function (req, res) {
 
 router.get('/details/:id', function (req, res) {
     articleModel.findById(req.params.id, function (err, doc) {
-        if (doc.user == req.session.user._id) {
+        if (req.session.user != null && doc.user == req.session.user._id) {
             doc.editable = true;
         }
         res.render('articles/details', {article: doc});
@@ -91,7 +91,6 @@ router.get('/delete/:id', function (req, res) {
 
 router.post('/search', function (req, res) {
     var title = req.body.title;
-    req.session.user.keyValue = title;
     articleModel.find({title: new RegExp(title)}).populate('user').exec(function (err, articles) {
         if (err || !articles) {
             req.flash('error', '暂无相关内容');
